@@ -62,14 +62,14 @@
                     <h2 class="font-normal">Social Profiles</h2>
                     <!-- Step 2 input fields -->
                     <div class="mt-3">
-                        <button id="form_wifi_scan" class="" type="button">Connect to Nunam Device</button>
+                        <button id="form_wifi_scan" class="" type="button">Scan for Networks</button>
 
                         <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;"
                                 disabled></select></p>
                         <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password"
                                 disabled></p>
 
-                        <button id="form_wifi_config" class="" type="button">Connect to Nunam Device</button>
+                        <button id="form_wifi_config" class="" type="button">Connect to Network</button>
 
                         <!-- <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p> -->
 
@@ -352,7 +352,7 @@
         });
 
         // Scan for networks button handler
-        document.querySelector('#form_wifi_scan').addEventListener('submit', function (event) {
+        document.querySelector('#form_wifi_scan').addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
 
@@ -376,7 +376,7 @@
         });
 
         // Submit credentials button handler
-        document.querySelector('#form_wifi_config').addEventListener('submit', function (event) {
+        document.querySelector('#form_wifi_config').addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
             onSubmitCredentialsButtonClick();
