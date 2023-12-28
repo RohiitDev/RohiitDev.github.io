@@ -57,12 +57,12 @@
                         </div>
                     </div>
 
-                    <div class="mt-3">
-                        <div id="connection-msg" style="display: none; font-size: 25px; font-weight: 500;"></div>
+                    <div id="connection-msg" style="display: none; font-size: 25px; font-weight: 500;"></div>
 
+                    <div class="mt-3">
                         <button id="form_connect" class="" type="button">Connect to Nunam Device</button>
-                        <button id="first_next_btn" class="button btn-navigate-form-step" type="button" step_number="2"
-                            disabled>Next</button>
+                        <button id="first_next_btn" class="button btn-navigate-form-step mt-3" type="button"
+                            step_number="2" style="display: none;">Next</button>
                     </div>
                 </section>
                 <!-- Step 2 Content, default hidden on page load. -->
@@ -274,7 +274,7 @@
 
                     document.getElementById('permissions_text').style.display = "none";
                     document.getElementById('form_connect').style.display = "none";
-                    document.getElementById('first_next_btn').disabled = false;
+                    document.getElementById('first_next_btn').style.display = "block";
 
 
 
