@@ -130,17 +130,17 @@
 
 
     <form id="form_connect">
-        <input id="connect_btn" type="submit" value="Connect to Argon">
+        <!-- <input id="connect_btn" type="submit" value="Connect to Argon"> -->
     </form>
 
     <form id="form_wifi_scan" style="display: none">
-        <input id="wifi_scan_btn" type="submit" value="Scan for Networks" disabled>
+        <!-- <input id="wifi_scan_btn" type="submit" value="Scan for Networks" disabled> -->
     </form>
 
     <form id="form_wifi_config" style="display: none">
-        <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;" disabled></select></p>
+        <!-- <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;" disabled></select></p>
         <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password" disabled></p>
-        <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p>
+        <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p> -->
     </form>
 
     <!-- <h3>Log</h3> -->
@@ -283,7 +283,7 @@
                     // Logger.log('Connected!');
                     document.getElementById('form_wifi_scan').style.display = "block";
                     document.getElementById('form_wifi_config').style.display = "block";
-                    document.getElementById('wifi_scan_btn').disabled = false;
+                    // document.getElementById('wifi_scan_btn').disabled = false;
                     // document.getElementById('connect_btn').value = "Disconnect from Argon";
 
 
@@ -361,7 +361,7 @@
             document.getElementById('ssid').disabled = true;
             document.getElementById('password').disabled = true;
             document.getElementById('submit_credentials_btn').disabled = true;
-            document.getElementById('wifi_scan_btn').disabled = true;
+            // document.getElementById('wifi_scan_btn').disabled = true;
 
             // Clear SSID list
             var ssid_list = document.getElementById("ssid");
