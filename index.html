@@ -61,7 +61,8 @@
                         <div id="connection-msg" style="display: none; font-size: 25px; font-weight: 500;"></div>
 
                         <button id="form_connect" class="" type="button">Connect to Nunam Device</button>
-                        <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
+                        <button class="button btn-navigate-form-step" type="button" step_number="2"
+                            disabled>Next</button>
                     </div>
                 </section>
                 <!-- Step 2 Content, default hidden on page load. -->
@@ -270,6 +271,15 @@
                     var connectionMsgElement = document.getElementById('connection-msg');
                     connectionMsgElement.style.display = 'block';
                     connectionMsgElement.textContent = message;
+
+                    document.getElementById('permissions_text').style.display = "none";
+                    document.getElementById('form_connect').disabled = false;
+
+
+
+
+
+
                 })
                 .catch(error => {
                     Logger.log('Argh! ' + error);
