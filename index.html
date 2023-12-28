@@ -58,6 +58,8 @@
                     </div>
 
                     <div class="mt-3">
+                        <div id="connection-msg" style="display: none; font-size: 25px; font-weight: 500;"></div>
+
                         <button id="form_connect" class="" type="button">Connect to Nunam Device</button>
                         <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
                     </div>
@@ -242,6 +244,7 @@
 
         function onConnectButtonClick() {
             Logger.log('Requesting Bluetooth Device...');
+            var message = ''
 
             navigator.bluetooth.requestDevice({
                 filters: [{
@@ -251,6 +254,7 @@
             })
                 .then(device => {
                     Logger.log('Connecting to ' + device.name + '...');
+                    message = 'Connected With Nunam Device: ' + device.name
                     device.addEventListener('gattserverdisconnected', onDisconnected);
                     argon_ble_device = device;
                     return device.gatt.connect();
@@ -261,6 +265,9 @@
                     document.getElementById('form_wifi_config').style.display = "block";
                     document.getElementById('wifi_scan_btn').disabled = false;
                     // document.getElementById('connect_btn').value = "Disconnect from Argon";
+                    var connectionMsgElement = document.getElementById('connection-msg');
+                    connectionMsgElement.style.display = 'block';
+                    connectionMsgElement.textContent = message;
                 })
                 .catch(error => {
                     Logger.log('Argh! ' + error);
