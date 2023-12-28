@@ -68,8 +68,12 @@
                 <!-- Step 2 Content, default hidden on page load. -->
                 <section id="step-2" class="form-step d-none">
                     <h2 class="font-normal">Scan Wifi Network</h2>
+
+                    <h2 id="config_complete" style="display: none;" class="font-normal">Wifi Configuration Completed
+                    </h2>
+
                     <!-- Step 2 input fields -->
-                    <div class="mt-3">
+                    <div id="scan_wifi_disable" class="mt-3">
                         <button id="form_wifi_scan" class="" type="button">Scan for Wifi Networks</button>
 
                         <div id="after_scan_wifi" style="display: none;">
@@ -83,21 +87,10 @@
                         </div>
 
 
-                        <!-- <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p> -->
-
-                        <!-- <form id="form_wifi_scan" style="display: none">
-                            <input id="wifi_scan_btn" type="submit" value="Scan for Networks" disabled>
-                        </form> -->
-
-                        <!-- <form id="form_wifi_config" style="display: none">
-                            <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;" disabled></select></p>
-                            <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password" disabled></p>
-                            <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p>
-                        </form> -->
-
                     </div>
                     <div class="mt-3">
                         <!-- <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button> -->
+
                         <button id="scan_wifi_next_btn" class="button btn-navigate-form-step" type="button"
                             step_number="3" style="display: none;">Next</button>
                     </div>
@@ -251,6 +244,10 @@
 
 
                         document.getElementById('scan_wifi_next_btn').style.display = "block";
+                        document.getElementById('config_complete').style.display = "block";
+                        document.getElementById('scan_wifi_disable').style.display = "none";
+
+
                         var connectionMsgElement = document.getElementById('wifi_connection-msg');
                         connectionMsgElement.style.display = 'block';
                         connectionMsgElement.textContent = conn_wifi_message;
