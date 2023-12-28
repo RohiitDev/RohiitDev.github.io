@@ -67,17 +67,21 @@
                 </section>
                 <!-- Step 2 Content, default hidden on page load. -->
                 <section id="step-2" class="form-step d-none">
-                    <h2 class="font-normal">Social Profiles</h2>
+                    <h2 class="font-normal">Scan Wifi Network</h2>
                     <!-- Step 2 input fields -->
                     <div class="mt-3">
-                        <button id="form_wifi_scan" class="" type="button">Scan for Networks</button>
+                        <button id="form_wifi_scan" class="" type="button">Scan for Wifi Networks</button>
 
-                        <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;"
-                                disabled></select></p>
-                        <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password"
-                                disabled></p>
+                        <div id="after_scan_wifi" style="display: none;">
+                            <p>Select Network: <select id="ssid" size=1 placeholder="WiFi SSID"
+                                    style="min-width: 150px;" disabled></select></p>
+                            <p id="password_p">Password: <input id="password" type="password" size=17
+                                    placeholder="Password" disabled></p>
 
-                        <button id="form_wifi_config" class="" type="button">Connect to Network</button>
+                            <button id="form_wifi_config" class="" type="button">Connect to Network</button>
+
+                        </div>
+
 
                         <!-- <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p> -->
 
@@ -93,8 +97,9 @@
 
                     </div>
                     <div class="mt-3">
-                        <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                        <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
+                        <!-- <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button> -->
+                        <button id="scan_wifi_next_btn" class="button btn-navigate-form-step" type="button"
+                            step_number="3">Next</button>
                     </div>
                 </section>
                 <!-- Step 3 Content, default hidden on page load. -->
@@ -278,10 +283,6 @@
 
 
 
-
-
-
-
                 })
                 .catch(error => {
                     Logger.log('Argh! ' + error);
@@ -317,6 +318,10 @@
                                 document.getElementById('ssid').disabled = false;
                                 document.getElementById('password').disabled = false;
                                 document.getElementById('ssid').dispatchEvent(new Event('change')); // Force update the submit button
+
+                                document.getElementById('after_scan_wifi').style.display = "block";
+                                document.getElementById('form_wifi_scan').style.display = "none";
+
                             }
                         }
                     } else {
