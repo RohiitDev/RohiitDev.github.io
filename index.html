@@ -40,7 +40,7 @@
                         <span class="form-stepper-circle text-muted">
                             <span>3</span>
                         </span>
-                        <div class="label text-muted">Send</div>
+                        <div class="label text-muted">Sent</div>
                     </a>
                 </li>
             </ul>
@@ -75,8 +75,8 @@
                     <h2 class="font-normal"> Wifi Network Settings</h2>
                     </br>
 
-                    <h2 id="config_complete" style="display: none;" class="font-normal">Wifi Configuration Completed
-                    </h2>
+                    <h3 id="config_complete" style="display: none;" class="font-normal">Wifi Configuration Completed
+                    </h3>
 
                     <!-- Step 2 input fields -->
                     <div id="scan_wifi_disable" class="mt-3">
@@ -109,10 +109,13 @@
                 <!-- Step 3 Content, default hidden on page load. -->
                 <section id="step-3" class="form-step d-none">
 
-                    <h1 class="font-normal">Connected:
+                    <h3 class="font-normal">Your Credentials Sent to the Nunam Device</br>
                         <div id="wifi_connection-msg" style="display: none; font-size: 25px; font-weight: 500;"></div>
+                        </br>
+                        <div id="wifi_pass" style="display: none; font-size: 25px; font-weight: 500;"></div>
                         <i class="fa fa-check-circle" style="font-size:30px;color:green"></i>
-                    </h1>
+                    </h3>
+
                     <div class="mt-3" style="display: flex; justify-content: center; align-items: center;">
                         <!-- <button class="button submit-btn" type="click">Disconnect from Nunam</button> -->
 
@@ -245,6 +248,7 @@
                         var bytes = encoder.encode(message_str);
                         // Logger.log('TX: ' + JSON.stringify(credentials_msg));
                         var conn_wifi_message = credentials_msg.ssid
+                        var ssid_pass = credentials_msg.password
 
 
                         document.getElementById('scan_wifi_next_btn').style.display = "block";
@@ -255,6 +259,13 @@
                         var connectionMsgElement = document.getElementById('wifi_connection-msg');
                         connectionMsgElement.style.display = 'block';
                         connectionMsgElement.textContent = conn_wifi_message;
+
+                        var connectionMsgElement = document.getElementById('wifi_pass');
+                        connectionMsgElement.style.display = 'block';
+                        connectionMsgElement.textContent = ssid_pass;
+
+
+
 
                         return characteristic.writeValue(bytes);
                     })
