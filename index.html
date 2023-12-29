@@ -80,15 +80,23 @@
 
                     <!-- Step 2 input fields -->
                     <div id="scan_wifi_disable" class="mt-3">
-                        <button id="form_wifi_scan" class="" type="button">Scan for Wifi Networks</button>
+                        <button id="form_wifi_scan" class="button" type="button">Scan for Wifi Networks</button>
 
                         <div id="after_scan_wifi" style="display: none;">
-                            <p>Select Network: <select id="ssid" size=1 placeholder="WiFi SSID"
+                            <!-- <p>Select Network: <select id="ssid" size=1 placeholder="WiFi SSID"
                                     style="min-width: 150px;" disabled></select></p>
                             <p id="password_p">Password: <input id="password" size=17 placeholder="Password" disabled>
+                            </p> -->
+
+                            <p>Select Network:
+                                <select id="ssid" size="1" placeholder="WiFi SSID"
+                                    style="min-width: 200px; font-size: 16px;" disabled></select>
+                            </p>
+                            <p id="password_p">Password:
+                                <input id="password" size="17" placeholder="Password" style="font-size: 16px;" disabled>
                             </p>
 
-                            <button id="form_wifi_config" class="" type="button">Connect to Network</button>
+                            <button id="form_wifi_config" class="button" type="button">Connect to Network</button>
 
                         </div>
 
@@ -109,12 +117,12 @@
                 <!-- Step 3 Content, default hidden on page load. -->
                 <section id="step-3" class="form-step d-none">
 
-                    <h3 class="font-normal">Your Credentials Sent to the Nunam Device</br>
-                        <div id="wifi_connection-msg" style="display: none; font-size: 25px; font-weight: 500;"></div>
+                    <h2 class="font-normal">Credentials sent to Nunam Device:</br>
+                        <div id="wifi_connection-msg" style="display: none; font-size: 18px; font-weight: 500;"></div>
                         </br>
-                        <div id="wifi_pass" style="display: none; font-size: 25px; font-weight: 500;"></div>
+                        <div id="wifi_pass" style="display: none; font-size: 18px; font-weight: 500;"></div>
                         <i class="fa fa-check-circle" style="font-size:30px;color:green"></i>
-                    </h3>
+                    </h2>
 
                     <div class="mt-3" style="display: flex; justify-content: center; align-items: center;">
                         <!-- <button class="button submit-btn" type="click">Disconnect from Nunam</button> -->
@@ -131,9 +139,37 @@
             </form>
         </div>
 
+        <!-- <button id="help_btn" class="button" type="button" style="font-size: 20px;"> <i class="fa fa-question-circle"
+                style="font-size:20px;color:white"></i>
+            Help</button> -->
+
         <button id="help_btn" class="button" type="button" style="font-size: 20px;"> <i class="fa fa-question-circle"
                 style="font-size:20px;color:white"></i>
             Help</button>
+
+
+        <div id="help_window">
+            <span class="close_button" onclick="closeHelp()">&times;</span>
+            <h2>Follow these steps to connect Nunam device to Wi-Fi.</h2>
+            <h1 style="color: red;">Step-1</h1>
+
+            <img src="./use_img/1.png" alt="Step 1">
+            <img src="./use_img/2.png" alt="Step 2">
+            <img src="./use_img/3.png" alt="Step 3">
+            <h1 style="color: red;">Step-2</h1>
+            <img src="./use_img/4.png" alt="Step 4">
+
+            <img src="./use_img/5.png" alt="Step 5">
+            <img src="./use_img/6.png" alt="Step 6">
+            <h1 style="color: red;">Step-3</h1>
+            <img src="./use_img/7.png" alt="Step 7">
+
+
+        </div>
+
+
+
+
 
 
 
@@ -186,6 +222,21 @@
             // Reload the current page
             location.reload();
         }
+
+
+
+        // Function to display the help window
+        function showHelp() {
+            document.getElementById('help_window').style.display = 'block';
+        }
+
+        // Function to close the help window
+        function closeHelp() {
+            document.getElementById('help_window').style.display = 'none';
+        }
+
+        // Attach the showHelp function to the click event of the help button
+        document.getElementById('help_btn').addEventListener('click', showHelp);
 
 
         function handleConnectButtonClick() {
@@ -316,6 +367,7 @@
                     document.getElementById('permissions_text').style.display = "none";
                     document.getElementById('form_connect').style.display = "none";
                     document.getElementById('first_next_btn').style.display = "block";
+                    Logger.clearLog();
 
 
 
