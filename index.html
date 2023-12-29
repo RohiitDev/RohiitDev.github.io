@@ -316,10 +316,8 @@
                 Logger.clearLog();
                 argon_ble_device.gatt.disconnect();
 
-                var connectionMsgElement = document.getElementById('connection-msg');
-                connectionMsgElement.style.display = 'none';
-                connectionMsgElement.textContent = message;
 
+                document.getElementById('connection-msg').style.display = "block";
                 document.getElementById('permissions_text').style.display = "block";
                 document.getElementById('form_connect').style.display = "block";
                 document.getElementById('first_next_btn').style.display = "none";
