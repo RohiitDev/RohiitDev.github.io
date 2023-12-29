@@ -96,7 +96,8 @@
                                 <input id="password" size="17" placeholder="Password" style="font-size: 16px;" disabled>
                             </p>
 
-                            <button id="form_wifi_config" class="button" type="button">Connect to Network</button>
+                            <button id="form_wifi_config" class="button btn-navigate-form-step" type="button"
+                                step_number="3">Connect to Network</button>
 
                         </div>
 
@@ -420,6 +421,7 @@
                             // Hacky fix to only enable SSID and Password fields after we get an SSID response from the Argon
                             if (ssids.length == 1) {  // Added our first SSID to the list
                                 // Enable SSID and Password fields on the web form
+                                Logger.log('Device not found. Try Again! ');
                                 document.getElementById('ssid').disabled = false;
                                 document.getElementById('password').disabled = false;
                                 document.getElementById('ssid').dispatchEvent(new Event('change')); // Force update the submit button
