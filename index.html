@@ -117,9 +117,11 @@
                 <!-- Step 3 Content, default hidden on page load. -->
                 <section id="step-3" class="form-step d-none">
 
-                    <h2 class="font-normal">Credentials sent to Nunam Device:</br>
-                        <div id="wifi_connection-msg" style="display: none; font-size: 18px; font-weight: 500;"></div>
+                    <h2 class="font-normal">Credentials sent to Nunam Device:
                         </br>
+                        </br>
+                        <div id="wifi_connection-msg" style="display: none; font-size: 18px; font-weight: 500;"></div>
+
                         <div id="wifi_pass" style="display: none; font-size: 18px; font-weight: 500;"></div>
                         <i class="fa fa-check-circle" style="font-size:30px;color:green"></i>
                     </h2>
@@ -131,8 +133,7 @@
                             onclick="onDisconnectButtonClick()" step_number="1">Disconnect
                             from Nunam</button> -->
                         <button class="button btn-navigate-form-step submit-btn" type="button" onclick="refreshPage()"
-                            step_number="1">Disconnect
-                            from Nunam</button>
+                            step_number="1">Credentials Sent</button>
                     </div>
 
                 </section>
@@ -478,12 +479,12 @@
                     onDisconnectButtonClick();
                 } else {
                     // Connect
-                    Logger.clearLog();
+
                     onConnectButtonClick();
                 }
             } else {
                 // Logger.log('Error: Web Bluetooth API is not available. Please make sure the "Experimental Web Platform features" flag is enabled.');
-                Logger.log('Web Bluetooth API is not available in your Device.' + error.name);
+                Logger.log('Web Bluetooth API is not available in your Device.');
             }
         });
 
