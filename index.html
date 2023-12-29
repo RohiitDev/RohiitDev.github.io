@@ -118,7 +118,7 @@
                         <!-- <button class="button submit-btn" type="click">Disconnect from Nunam</button> -->
 
                         <button class="button btn-navigate-form-step submit-btn" type="button"
-                            onclick="onDisconnectButtonClick()" step_number="2">Disconnect
+                            onclick="onDisconnectButtonClick()" step_number="1">Disconnect
                             from Nunam</button>
                     </div>
 
@@ -131,14 +131,14 @@
     <!-- No Need to delete -->
     <form id="form_connect">
     </form>
-    <form id="form_wifi_scan" style="display: none">
-        <input id="wifi_scan_btn" type="submit" value="Scan for Networks" disabled>
-    </form>
-    <form id="form_wifi_config" style="display: none">
-        <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;" disabled></select></p>
-        <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password" disabled></p>
-        <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p>
-    </form>
+    <!-- <form id="form_wifi_scan" style="display: none"> -->
+    <input id="wifi_scan_btn" type="submit" value="Scan for Networks" disabled>
+    <!-- </form> -->
+    <!-- <form id="form_wifi_config" style="display: none"> -->
+    <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;" disabled></select></p>
+    <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password" disabled></p>
+    <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p>
+    <!-- </form> -->
     <div id="output" class="output" style="border:1px">
         <pre id="log"></pre>
     </div>
