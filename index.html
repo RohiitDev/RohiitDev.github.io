@@ -117,7 +117,7 @@
                         <!-- <button class="button submit-btn" type="click">Disconnect from Nunam</button> -->
 
                         <button class="button btn-navigate-form-step submit-btn" type="button"
-                            onclick="onDisconnectButtonClick()" step_number="2">Disconnect
+                            onclick="onDisconnectButtonClick()" step_number="1">Disconnect
                             from Nunam</button>
                     </div>
 
@@ -311,13 +311,13 @@
                 while (ssid_list.firstChild) {
                     ssid_list.removeChild(ssid_list.firstChild);
                 }
-
                 var password = document.getElementById("password");
                 password.value = "";
-
                 // document.getElementById('connect_btn').value = "Connect to Argon";
-
                 ssids = [];
+                console.log(ssids)
+                console.log(password.value)
+                console.log(argon_ble_device)
 
 
             }
