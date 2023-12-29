@@ -40,6 +40,17 @@ body {
     margin-bottom: 20px;
 }
 
+@media only screen and (max-width: 600px) {
+    #help_window {
+        width: 80%;
+        /* Adjust the width for smaller screens */
+    }
+
+    #help_window img {
+        max-width: 70%;
+        /* Make images take full width in smaller screens */
+    }
+}
 
 
 
