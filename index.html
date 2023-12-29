@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -64,6 +65,11 @@
                         <button id="first_next_btn" class="button btn-navigate-form-step mt-3" type="button"
                             step_number="2" style="display: none;">Next</button>
                     </div>
+
+                    <div id="output" class="output" style="border:1px">
+                        <pre id="log"></pre>
+                    </div>
+
                 </section>
                 <!-- Step 2 Content, default hidden on page load. -->
                 <section id="step-2" class="form-step d-none">
@@ -95,6 +101,11 @@
                         <button id="scan_wifi_next_btn" class="button btn-navigate-form-step" type="button"
                             step_number="3" style="display: none;">Next</button>
                     </div>
+
+                    <div id="output" class="output" style="border:1px">
+                        <pre id="log"></pre>
+                    </div>
+
                 </section>
                 <!-- Step 3 Content, default hidden on page load. -->
                 <section id="step-3" class="form-step d-none">
@@ -104,65 +115,51 @@
                         <i class="fa fa-check-circle" style="font-size:30px;color:green"></i>
                     </h1>
                     <div class="mt-3" style="display: flex; justify-content: center; align-items: center;">
-                        <button class="button submit-btn" type="click">Disconnect from Nunam</button>
+                        <!-- <button class="button submit-btn" type="click">Disconnect from Nunam</button> -->
+
+                        <button class="button btn-navigate-form-step submit-btn" type="button"
+                            onclick="onDisconnectButtonClick()" step_number="2">Disconnect
+                            from Nunam</button>
                     </div>
 
-
-                    <!-- <h2 class="font-normal">Personal Details</h2>
-                    <div class="mt-3">
-                        Step 3 input fields goes here..
-                    </div>
-                    <div class="mt-3">
-                        <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                        <button class="button submit-btn" type="submit">Save</button>
-                    </div> -->
                 </section>
             </form>
         </div>
     </div>
 
 
-
-
-
-
-
-
-
+    <!-- No Need to delete -->
     <form id="form_connect">
-        <!-- <input id="connect_btn" type="submit" value="Connect to Argon"> -->
     </form>
-
     <form id="form_wifi_scan" style="display: none">
         <input id="wifi_scan_btn" type="submit" value="Scan for Networks" disabled>
     </form>
-
     <form id="form_wifi_config" style="display: none">
-        <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;" disabled></select></p>
-        <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password" disabled></p>
-        <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p>
+        <!-- <p>Network: <select id="ssid" size=1 placeholder="WiFi SSID" style="min-width: 150px;" disabled></select></p> -->
+        <!-- <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password" disabled></p> -->
+        <!-- <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p> -->
     </form>
-
-    <!-- <h3>Log</h3> -->
     <div id="output" class="output" style="border:1px">
         <pre id="log"></pre>
     </div>
+    <!-- ------------------------ -->
+
 
     <script>
 
-        // var Logger = {
-        //     log: function () {
-        //         var line = Array.prototype.slice.call(arguments).map(function (argument) {
-        //             return typeof argument === 'string' ? argument : JSON.stringify(argument);
-        //         }).join(' ');
+        var Logger = {
+            log: function () {
+                var line = Array.prototype.slice.call(arguments).map(function (argument) {
+                    return typeof argument === 'string' ? argument : JSON.stringify(argument);
+                }).join(' ');
 
-        //         document.querySelector('#log').textContent += '> ' + line + '\n';
-        //     },
+                document.querySelector('#log').textContent += '> ' + line + '\n';
+            },
 
-        //     clearLog: function () {
-        //         document.querySelector('#log').textContent = '';
-        //     },
-        // };
+            clearLog: function () {
+                document.querySelector('#log').textContent = '';
+            },
+        };
 
         var argon_ble_device = null;    // BLE connection instance
         var ssids = [];
@@ -196,7 +193,7 @@
                                 // Logger.log('Added \'rx\' service listener');
                             })
                             .catch(error => {
-                                // Logger.log('Argh! ' + error);
+                                Logger.log('Try Again! ' + error.name);
                             });
                         return service;
                     })
@@ -216,10 +213,10 @@
                         // return characteristic.writeValue(cmd_wifi_scan)
                     })
                     .catch(error => {
-                        // Logger.log('Argh! ' + error);
+                        Logger.log('Try Again! ' + error.name);
                     })
             } else {
-                // Logger.log('Not connected to Argon!');
+                Logger.log('Try Again! Not connected to Nunam Device!');
             }
         }
 
@@ -255,15 +252,15 @@
                         return characteristic.writeValue(bytes);
                     })
                     .catch(error => {
-                        // Logger.log('Argh! ' + error);
+                        Logger.log('Try Again! ' + error.name);
                     })
             } else {
-                // Logger.log('Not connected to Argon!');
+                Logger.log('Try Again! Not connected to Nunam Device!');
             }
         }
 
         function onConnectButtonClick() {
-            // Logger.log('Requesting Bluetooth Device...');
+            Logger.log('Scanning Bluetooth Device...');
             var message = ''
 
             navigator.bluetooth.requestDevice({
@@ -274,8 +271,9 @@
             })
                 .then(device => {
                     // Logger.log('Connecting to ' + device.name + '...');
+                    Logger.clearLog();
                     message = 'Connected With Nunam Device: ' + device.name
-                    device.addEventListener('gattserverdisconnected', onDisconnected);
+                    // device.addEventListener('gattserverdisconnected', onDisconnected);
                     argon_ble_device = device;
                     return device.gatt.connect();
                 })
@@ -299,15 +297,40 @@
 
                 })
                 .catch(error => {
-                    // Logger.log('Argh! ' + error);
+                    if (error.name === 'NotFoundError') {
+                        Logger.log('Device not found. Try Again!');
+                    } else {
+                        Logger.log('Try Again! ' + error.name);
+                    }
                     argon_ble_device = null;
                 });
+            // .catch(error => {
+            //     Logger.log('Try Again! ' + error.name);
+            //     argon_ble_device = null;
+            // });
         }
 
         function onDisconnectButtonClick() {
             if (argon_ble_device) {
-                // Logger.log('Disconnecting...');
+                Logger.log('Disconnecting...');
+                Logger.clearLog();
                 argon_ble_device.gatt.disconnect();
+
+                argon_ble_device = null;
+                // Clear SSID list
+                var ssid_list = document.getElementById("ssid");
+                while (ssid_list.firstChild) {
+                    ssid_list.removeChild(ssid_list.firstChild);
+                }
+
+                var password = document.getElementById("password");
+                password.value = "";
+
+                // document.getElementById('connect_btn').value = "Connect to Argon";
+
+                ssids = [];
+
+
             }
         }
 
@@ -388,7 +411,7 @@
                     onDisconnectButtonClick();
                 } else {
                     // Connect
-                    // Logger.clearLog();
+                    Logger.clearLog();
                     onConnectButtonClick();
                 }
             } else {
@@ -402,6 +425,7 @@
             event.preventDefault();
 
             // Reset UI State if button is clicked (don't want to duplicate networks)
+            Logger.clearLog();
             document.getElementById('ssid').disabled = true;
             document.getElementById('password').disabled = true;
             document.getElementById('submit_credentials_btn').disabled = true;
@@ -424,6 +448,7 @@
         document.querySelector('#form_wifi_config').addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
+            Logger.clearLog();
             onSubmitCredentialsButtonClick();
         });
 
