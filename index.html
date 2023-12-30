@@ -81,6 +81,7 @@
                     <!-- Step 2 input fields -->
                     <div id="scan_wifi_disable" class="mt-3">
                         <button id="form_wifi_scan" class="button" type="button">Scan for Wifi Networks</button>
+                        </br>
                         <div id="loader_show" class="loader" style="display: none;"></div>
 
                         <div id="after_scan_wifi" style="display: none;">
@@ -371,7 +372,7 @@
                     document.getElementById('permissions_text').style.display = "none";
                     document.getElementById('form_connect').style.display = "none";
                     document.getElementById('first_next_btn').style.display = "block";
-                    Logger.clearLog();
+                    // Logger.clearLog();
 
 
 
@@ -506,7 +507,7 @@
             event.preventDefault();
 
             // Reset UI State if button is clicked (don't want to duplicate networks)
-            Logger.clearLog();
+            // Logger.clearLog();
             document.getElementById('ssid').disabled = true;
             document.getElementById('password').disabled = true;
             document.getElementById('submit_credentials_btn').disabled = true;
@@ -529,7 +530,7 @@
         document.querySelector('#form_wifi_config').addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
-            Logger.clearLog();
+            // Logger.clearLog();
             onSubmitCredentialsButtonClick();
         });
 
