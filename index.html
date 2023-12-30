@@ -434,11 +434,15 @@
 
                                 document.getElementById('after_scan_wifi').style.display = "block";
                                 document.getElementById('form_wifi_scan').style.display = "none";
+                                document.getElementById('loader_show').style.display = 'none';
 
                             }
                         }
+                        else {
+                            Logger.log('Device not found. Try Again! ');
+                        }
                     } else {
-                        // Logger.log('Unknown message received: \"' + result_str + '\"');
+                        Logger.log('Try Again!!');
                     }
                 }
             } catch (error) {
