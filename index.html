@@ -84,6 +84,7 @@
                         <button id="form_wifi_scan" class="button mt-3" type="button" style="font-size: 15px;">Scan for
                             Wifi Networks</button>
                         </br>
+                        <h6 id="scan_try_again" style="color: red; display: none;">Try Again!!!</h6>
                         <div id="loader_show" class="loader" style="display: none;"></div>
 
                         <div id="after_scan_wifi" style="display: none;">
@@ -132,7 +133,7 @@
                         <!-- <button class="button btn-navigate-form-step submit-btn" type="button"
                             onclick="onDisconnectButtonClick()" step_number="1">Disconnect
                             from Nunam</button> -->
-                        <h6 class="text-muted">Would you like to Configure again?</h6>
+                        <p class="text-muted">Would you like to Configure again?</p>
                         <button class="button btn-navigate-form-step submit-btn" type="button" onclick="refreshPage()"
                             step_number="1">Configure Again</button>
                     </div>
@@ -265,6 +266,7 @@
                             })
                             .catch(error => {
                                 document.getElementById('loader_show').style.display = 'none';
+                                document.getElementById('scan_try_again').style.display = 'block';
                                 Logger.log('Try Again! ');
                             });
                         return service;
@@ -286,12 +288,14 @@
                     })
                     .catch(error => {
                         console.log('Try again-1')
-                        // document.getElementById('loader_show').style.display = 'none';
+                        document.getElementById('loader_show').style.display = 'none';
+                        document.getElementById('scan_try_again').style.display = 'block';
                         Logger.log('Try Again! ' + error.name);
                     })
             } else {
                 console.log('Try again-2')
-                // document.getElementById('loader_show').style.display = 'none';
+                document.getElementById('loader_show').style.display = 'none';
+                document.getElementById('scan_try_again').style.display = 'block';
                 Logger.log('Try Again! Not connected to Nunam Device!');
             }
         }
