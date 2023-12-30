@@ -81,7 +81,7 @@
                     <!-- Step 2 input fields -->
                     <div id="scan_wifi_disable" class="mt-3">
                         <button id="form_wifi_scan" class="button" type="button">Scan for Wifi Networks</button>
-                        <div class="loader"></div>
+                        <div id="loader_show" class="loader" style="display: none;"></div>
 
                         <div id="after_scan_wifi" style="display: none;">
                             <!-- <p>Select Network: <select id="ssid" size=1 placeholder="WiFi SSID"
@@ -249,6 +249,7 @@
 
         function onScanButtonClick() {
             if (argon_ble_device) {
+                document.getElementById('loader_show').style.display = 'block';
                 argon_ble_device.gatt.getPrimaryService(uuid_wifi_config_service)
                     // Set up notifications
                     .then(service => {
