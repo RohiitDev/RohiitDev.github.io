@@ -132,7 +132,8 @@
                         <!-- <button class="button btn-navigate-form-step submit-btn" type="button"
                             onclick="onDisconnectButtonClick()" step_number="1">Disconnect
                             from Nunam</button> -->
-                        <h class="text-muted"></h>>Would you like to connecting again?</h6>
+                        <h6 class="text-muted">Would you like to connecting again?</h6>
+                        </br>
                         <button class="button btn-navigate-form-step submit-btn" type="button" onclick="refreshPage()"
                             step_number="1">Connect Again</button>
                     </div>
@@ -264,6 +265,7 @@
                                 // Logger.log('Added \'rx\' service listener');
                             })
                             .catch(error => {
+                                document.getElementById('loader_show').style.display = 'none';
                                 Logger.log('Try Again! ');
                             });
                         return service;
@@ -285,10 +287,12 @@
                     })
                     .catch(error => {
                         console.log('Try again-1')
+                        document.getElementById('loader_show').style.display = 'none';
                         Logger.log('Try Again! ' + error.name);
                     })
             } else {
                 console.log('Try again-2')
+                document.getElementById('loader_show').style.display = 'none';
                 Logger.log('Try Again! Not connected to Nunam Device!');
             }
         }
