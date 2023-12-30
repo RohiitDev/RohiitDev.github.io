@@ -287,12 +287,12 @@
                     })
                     .catch(error => {
                         console.log('Try again-1')
-                        document.getElementById('loader_show').style.display = 'none';
+                        // document.getElementById('loader_show').style.display = 'none';
                         Logger.log('Try Again! ' + error.name);
                     })
             } else {
                 console.log('Try again-2')
-                document.getElementById('loader_show').style.display = 'none';
+                // document.getElementById('loader_show').style.display = 'none';
                 Logger.log('Try Again! Not connected to Nunam Device!');
             }
         }
