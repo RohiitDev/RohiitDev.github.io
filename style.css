@@ -265,7 +265,7 @@ ul.form-stepper li a .form-stepper-circle {
 
 .loader {
     margin: auto;
-    border: 15px solid #EAF0F6;
+    border: 8px solid #EAF0F6;
     border-radius: 50%;
     border-top: 20px solid #FF7A59;
     width: 20px;
