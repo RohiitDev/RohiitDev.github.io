@@ -60,7 +60,8 @@
                     <div id="connection-msg" style="display: none; font-size: 25px; font-weight: 500;"></div>
 
                     <div class="mt-3">
-                        <button id="form_connect" class="button" type="button">Connect to Nunam Device</button>
+                        <button id="form_connect" class="button" type="button" style="font-size: 15px;">Connect to Nunam
+                            Device</button>
                         <button id="first_next_btn" class="button btn-navigate-form-step mt-3" type="button"
                             step_number="2" style="display: none;">Next</button>
                     </div>
@@ -79,17 +80,13 @@
                     </h3>
 
                     <!-- Step 2 input fields -->
-                    <div id="scan_wifi_disable" class="mt-3">
-                        <button id="form_wifi_scan" class="button" type="button">Scan for Wifi Networks</button>
+                    <div id="scan_wifi_disable">
+                        <button id="form_wifi_scan" class="button mt-3" type="button" style="font-size: 15px;">Scan for
+                            Wifi Networks</button>
                         </br>
                         <div id="loader_show" class="loader" style="display: none;"></div>
 
                         <div id="after_scan_wifi" style="display: none;">
-                            <!-- <p>Select Network: <select id="ssid" size=1 placeholder="WiFi SSID"
-                                    style="min-width: 150px;" disabled></select></p>
-                            <p id="password_p">Password: <input id="password" size=17 placeholder="Password" disabled>
-                            </p> -->
-
                             <p>Select Network:
                                 <select id="ssid" size="1" placeholder="WiFi SSID"
                                     style="min-width: 200px; font-size: 16px;" disabled></select>
@@ -99,7 +96,7 @@
                             </p>
 
                             <button id="form_wifi_config" class="button btn-navigate-form-step" type="button"
-                                step_number="3">Connect to Network</button>
+                                step_number="3" style="font-size: 15px;">Connect to Network</button>
 
                         </div>
 
@@ -191,11 +188,11 @@
         <p id="password_p">Password: <input id="password" type="password" size=17 placeholder="Password" disabled></p>
         <p><input id="submit_credentials_btn" type="submit" value="Connect to Network" disabled></p>
     </form>
-    <div id="output" class="output" style="border:1px">
+    <!-- <div id="output" class="output" style="border:1px">
         <pre id="log"></pre>
-    </div>
+    </div> -->
     <!-- ------------------------ -->
-
+    ß
 
     <script>
 
@@ -266,7 +263,7 @@
                                 // Logger.log('Added \'rx\' service listener');
                             })
                             .catch(error => {
-                                Logger.log('Try Again! ' + error.name);
+                                Logger.log('Try Again! ');
                             });
                         return service;
                     })
@@ -286,9 +283,11 @@
                         // return characteristic.writeValue(cmd_wifi_scan)
                     })
                     .catch(error => {
+                        console.log('Try again-1')
                         Logger.log('Try Again! ' + error.name);
                     })
             } else {
+                console.log('Try again-2')
                 Logger.log('Try Again! Not connected to Nunam Device!');
             }
         }
