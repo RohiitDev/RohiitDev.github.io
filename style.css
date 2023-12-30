@@ -266,8 +266,8 @@ ul.form-stepper li a .form-stepper-circle {
 .loader {
     margin: auto;
     border: 8px solid #EAF0F6;
-    border-radius: 30%;
-    border-top: 20px solid #FF7A59;
+    border-radius: 50%;
+    border-top: 10px solid #FF7A59;
     width: 20px;
     height: 20px;
     animation: spinner 1s linear infinite;
