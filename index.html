@@ -290,7 +290,7 @@
                         console.log('Try again-1')
                         document.getElementById('loader_show').style.display = 'none';
                         document.getElementById('scan_try_again').style.display = 'block';
-                        Logger.log('Try Again! ' + error.name);
+                        Logger.log('Try Again! ');
                     })
             } else {
                 console.log('Try again-2')
@@ -379,7 +379,7 @@
                     document.getElementById('permissions_text').style.display = "none";
                     document.getElementById('form_connect').style.display = "none";
                     document.getElementById('first_next_btn').style.display = "block";
-                    // Logger.clearLog();
+                    Logger.clearLog();
 
 
 
@@ -443,6 +443,7 @@
                                 document.getElementById('after_scan_wifi').style.display = "block";
                                 document.getElementById('form_wifi_scan').style.display = "none";
                                 document.getElementById('loader_show').style.display = 'none';
+                                document.getElementById('scan_try_again').style.display = 'none';
 
                             }
                         }
