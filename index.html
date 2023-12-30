@@ -56,10 +56,8 @@
                             Note: Allow "Nearby Devices" permissions.
                         </div>
                     </div>
-                    <h3 id="connection-msg">Connected With Nunam Device: <div
-                            style="display: none; font-size: 20px; font-weight: 500; color: green;"></div>
-                    </h3>
 
+                    <div id="connection-msg" style="display: none; font-size: 20px; font-weight: 500;"></div>
 
                     <div class="mt-3">
                         <button id="form_connect" class="button" type="button" style="font-size: 15px;">Connect to Nunam
@@ -135,7 +133,7 @@
                         <!-- <button class="button btn-navigate-form-step submit-btn" type="button"
                             onclick="onDisconnectButtonClick()" step_number="1">Disconnect
                             from Nunam</button> -->
-                        <h6 class="text-muted">Would you like to Configure again?</h6>
+                        <p class="text-muted">Would you like to Configure again?</p>
                         <button class="button btn-navigate-form-step submit-btn" type="button" onclick="refreshPage()"
                             step_number="1">Configure Again</button>
                     </div>
@@ -361,7 +359,7 @@
             })
                 .then(device => {
                     // Logger.log('Connecting to ' + device.name + '...');
-                    message = device.name
+                    message = 'Connected With Nunam Device: ' + device.name
                     // device.addEventListener('gattserverdisconnected', onDisconnected);
                     argon_ble_device = device;
                     return device.gatt.connect();
